@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       if user.activated?
         log_in user
-        redirect_back_or user
+        redirect_back_or root_url
+        # redirect_back_or user
       else
         message = "Account not activated. "
         message += "Check you email for the activation link."
